@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conditional Background Attachment</title>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow-x: hidden;
+    }
+    .parallax {
+        background-image: url('https://via.placeholder.com/1920x1080');
+        height: 100vh;
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: center;
+    }
+    .parallax.scroll {
+        background-attachment: scroll;
+    }
+    .content {
+        height: 200vh; /* Sayfanın kaydırılabilir olması için uzun içerik */
+        background: #fff;
+    }
+</style>
+</head>
+<body>
+    <div class="parallax" id="parallax"></div>
+    <div class="content">
+        <!-- İçerik buraya -->
+    </div>
+<script>
+    function isIOS() {
+        return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    }
+
+    if (isIOS()) {
+        document.getElementById('parallax').classList.add('scroll');
+    }
+</script>
+</body>
+</html>
